@@ -6,4 +6,8 @@ package com.devjurnal.recyclerviewmvpkotlin.Models
 
 // TODO Setter Getter Object -> gunakan var
 class Users (var nama: String , var alamat: String){
+
+//    var nama: String , var alamat: String
+//    var nma : String? = null
+//    var almt : String? = null
 }

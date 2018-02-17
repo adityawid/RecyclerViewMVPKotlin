@@ -2,6 +2,7 @@ package com.devjurnal.recyclerviewmvpkotlin
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.devjurnal.recyclerviewmvpkotlin.Models.Users
 import com.devjurnal.recyclerviewmvpkotlin.Presenters.UserPresenterImp
@@ -22,9 +23,9 @@ class MainActivity : AppCompatActivity(), UserView {
     private fun initView() {
         btnSubmit.setOnClickListener {
             if (edtNama.text.toString().isNotEmpty() || edtAlamat.text.toString().isNotEmpty()){
-
+                presenter.addList(edtNama.text.toString(), edtAlamat.text.toString())
             }else {
-                Error("")
+                Error("form kosong")
             }
         }
     }
@@ -34,7 +35,9 @@ class MainActivity : AppCompatActivity(), UserView {
     }
 
     override fun Success(datas: ArrayList<Users>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        var adapter = UserAdapter(datas)
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        recyclerView.adapter = adapter
     }
 
     override fun Error(pesan: String) {

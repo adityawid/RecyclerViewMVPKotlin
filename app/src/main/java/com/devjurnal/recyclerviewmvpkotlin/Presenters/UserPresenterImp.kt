@@ -1,5 +1,6 @@
 package com.devjurnal.recyclerviewmvpkotlin.Presenters
 
+import android.util.Log
 import com.devjurnal.recyclerviewmvpkotlin.Models.Users
 import com.devjurnal.recyclerviewmvpkotlin.Views.UserView
 
@@ -9,6 +10,8 @@ import com.devjurnal.recyclerviewmvpkotlin.Views.UserView
 class UserPresenterImp : UserPresenter {
 
     var userView : UserView? = null
+    // deklarasi array
+    var data = ArrayList<Users>()
 
     constructor(userView: UserView?) {
         this.userView = userView
@@ -19,13 +22,11 @@ class UserPresenterImp : UserPresenter {
         // create model
         var userUser = Users(nama,alamat)
 
-        // deklarasi array
-        var data : ArrayList<Users>? = null
-
+        Log.d("data", userUser.alamat)
         // insert model ke array
-        data?.add(userUser)
+        data.add(userUser)
 
-        userView?.Success(data!!)
+        userView?.Success(data)
 
     }
 }
